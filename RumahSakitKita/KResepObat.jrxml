@@ -1,0 +1,192 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="LResepObat" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f82c072-c460-47b6-af9c-ab0fd1d7e305">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MYSQL"/>
+	<parameter name="kd_resep" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[SELECT 
+    r.kd_resep,
+    r.no_registrasi,
+    r.tgl_resep,
+    pm.nama_petugas,
+    p.nama_pasien,
+    d.kd_detail,
+    d.kd_obat,
+    o.nama_obat,
+    o.jenis_obat,
+    d.jumlah,
+    o.satuan,
+    d.aturan_pakai,
+    o.harga,
+    (d.jumlah * o.harga) AS subtotal
+FROM 
+    rumah_sakit.resep r
+JOIN 
+    rumah_sakit.pendaftaran pd ON r.no_registrasi = pd.no_registrasi
+JOIN 
+    rumah_sakit.pasien p ON pd.kd_pasien = p.kd_pasien
+JOIN 
+    rumah_sakit.petugas_medis pm ON r.kd_petugas = pm.kd_petugas
+JOIN 
+    rumah_sakit.detail_resep d ON r.kd_resep = d.kd_resep
+JOIN 
+    rumah_sakit.obat o ON d.kd_obat = o.kd_obat
+WHERE 
+    r.kd_resep = $P{kd_resep}]]></query>
+	<field name="kd_resep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_resep"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_resep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resep"/>
+	</field>
+	<field name="no_registrasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_registrasi"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_registrasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resep"/>
+	</field>
+	<field name="tgl_resep" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tgl_resep"/>
+		<property name="com.jaspersoft.studio.field.label" value="tgl_resep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resep"/>
+	</field>
+	<field name="nama_petugas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_petugas"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_petugas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="petugas_medis"/>
+	</field>
+	<field name="nama_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_pasien"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="kd_detail" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_detail"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_detail"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="detail_resep"/>
+	</field>
+	<field name="kd_obat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_obat"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_obat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="detail_resep"/>
+	</field>
+	<field name="nama_obat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_obat"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_obat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat"/>
+	</field>
+	<field name="jenis_obat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jenis_obat"/>
+		<property name="com.jaspersoft.studio.field.label" value="jenis_obat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat"/>
+	</field>
+	<field name="jumlah" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="jumlah"/>
+		<property name="com.jaspersoft.studio.field.label" value="jumlah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="detail_resep"/>
+	</field>
+	<field name="satuan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="satuan"/>
+		<property name="com.jaspersoft.studio.field.label" value="satuan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat"/>
+	</field>
+	<field name="aturan_pakai" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="aturan_pakai"/>
+		<property name="com.jaspersoft.studio.field.label" value="aturan_pakai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="detail_resep"/>
+	</field>
+	<field name="harga" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="harga"/>
+		<property name="com.jaspersoft.studio.field.label" value="harga"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat"/>
+	</field>
+	<field name="subtotal" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="subtotal"/>
+		<property name="com.jaspersoft.studio.field.label" value="subtotal"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="81" splitType="Stretch">
+		<element kind="staticText" uuid="438e0cd6-6825-4dff-8d3f-68c6ecdbee9d" x="95" y="0" width="210" height="25" fontSize="19.0" bold="true">
+			<text><![CDATA[Rumah Sakit Kita]]></text>
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="74bf3a7e-d23d-497d-93a3-0830318cd87c" x="95" y="40" width="245" height="15">
+			<text><![CDATA[Tj. Barat, Kec. Jagakarsa, Kota Jakarta Selatan, DKI Jakarta]]></text>
+		</element>
+		<element kind="staticText" uuid="6526df86-181d-4965-a9a9-079fda1813e4" x="95" y="25" width="205" height="15">
+			<text><![CDATA[Jl. Nangka Raya No.58 C, RT.7/RW.5]]></text>
+		</element>
+		<element kind="image" uuid="f0805cbc-664f-460a-b924-d7c9109a0a1a" x="0" y="0" width="65" height="60" hImageAlign="Center">
+			<expression><![CDATA["logo-128.png"]]></expression>
+		</element>
+		<element kind="line" uuid="0a434af6-0c0d-4b60-a35a-b4c29693ac3f" x="0" y="80" width="556" height="1">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+	</title>
+	<pageHeader height="62" splitType="Stretch">
+		<element kind="staticText" uuid="ba79df63-51f0-4273-8690-2067e5a7fe2f" x="415" y="0" width="44" height="20">
+			<text><![CDATA[Kode ]]></text>
+		</element>
+		<element kind="staticText" uuid="a347515a-d820-4316-ad30-7495170c6cce" x="460" y="0" width="20" height="20" hTextAlign="Center">
+			<text><![CDATA[-]]></text>
+		</element>
+		<element kind="textField" uuid="bfa3c305-9f91-48ff-9de0-cd0e71658ec2" x="480" y="0" width="70" height="20">
+			<expression><![CDATA[$P{kd_resep}]]></expression>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5602b6ee-fd34-4e5a-b563-79c260c3729b"/>
+		</element>
+		<element kind="staticText" uuid="e09f82ea-f839-47a4-853e-f887c07cbbed" x="0" y="10" width="240" height="20" fontSize="15.0" bold="true">
+			<text><![CDATA[Resep Obat]]></text>
+		</element>
+		<element kind="line" uuid="f0d4ffef-d62b-4921-b4f1-b9ef3e6ebe96" x="0" y="61" width="556" height="1"/>
+		<element kind="staticText" uuid="bd0d0eff-85f7-44ff-a4d0-b2f4d2054229" x="460" y="21" width="20" height="20" hTextAlign="Center">
+			<text><![CDATA[-]]></text>
+		</element>
+		<element kind="textField" uuid="1e3e65d3-bb92-4b9d-825b-093b7bf6f393" x="480" y="21" width="70" height="20">
+			<expression><![CDATA[$F{tgl_resep}]]></expression>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5602b6ee-fd34-4e5a-b563-79c260c3729b"/>
+		</element>
+		<element kind="staticText" uuid="17c2c0b9-6f52-4d2d-8e96-3dca08126a8a" x="415" y="21" width="44" height="20">
+			<text><![CDATA[Tanggal]]></text>
+		</element>
+		<element kind="textField" uuid="b1ff8a3b-abd1-4c3a-8a12-209a81077cff" x="480" y="40" width="70" height="20">
+			<expression><![CDATA[$F{nama_petugas}]]></expression>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5602b6ee-fd34-4e5a-b563-79c260c3729b"/>
+		</element>
+		<element kind="staticText" uuid="42ae9810-56df-4459-8dce-71c2ef759f04" x="415" y="40" width="44" height="20">
+			<text><![CDATA[Petugas]]></text>
+		</element>
+		<element kind="staticText" uuid="85747aec-5ca7-4b37-b0cf-9bddf59dd69e" x="460" y="40" width="20" height="20" hTextAlign="Center">
+			<text><![CDATA[-]]></text>
+		</element>
+	</pageHeader>
+	<columnHeader height="23" splitType="Stretch">
+		<element kind="staticText" uuid="1781c20f-ac71-4f23-82dd-4774ce1965f8" x="90" y="0" width="90" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Jumlah]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="33c5fa1e-97fc-4e15-a0c5-c2218f5f4610"/>
+		</element>
+		<element kind="line" uuid="5380578a-b9d8-43ea-924f-8122b1d7a18d" x="-1" y="20" width="556" height="1"/>
+		<element kind="staticText" uuid="fa7f8bbf-243a-4fb4-a4a1-b1f1fbe30674" x="0" y="0" width="80" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Nama Obat]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5602b6ee-fd34-4e5a-b563-79c260c3729b"/>
+		</element>
+		<element kind="staticText" uuid="e075bfff-a8ed-43a7-83dd-e021fb0a3901" x="205" y="0" width="100" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Aturan Pakai]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<element kind="textField" uuid="0af4c5d8-f2eb-4d39-9065-a9e20c52b9a3" x="0" y="0" width="80" height="20">
+				<expression><![CDATA[$F{nama_obat}]]></expression>
+			</element>
+			<element kind="textField" uuid="24a4bf39-0e1c-43bd-8b5f-4fbbfa23ff12" x="90" y="0" width="90" height="20">
+				<expression><![CDATA[$F{jumlah}]]></expression>
+			</element>
+			<element kind="textField" uuid="f9136495-12b9-40ea-8d88-008b5a9715b6" x="205" y="0" width="100" height="20">
+				<expression><![CDATA[$F{aturan_pakai}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

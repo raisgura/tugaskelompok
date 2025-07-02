@@ -1,0 +1,198 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="PendaftaramPasien" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a70595a5-8437-423b-80f5-74f829d5e797">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MYSQL"/>
+	<parameter name="no_registrasi" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[SELECT 
+    rumah_sakit.pendaftaran.no_registrasi,
+    rumah_sakit.pasien.kd_pasien,
+    rumah_sakit.pasien.nama_pasien,
+    rumah_sakit.pendaftaran.kd_pasien,
+    rumah_sakit.pendaftaran.tgl_registrasi,
+    rumah_sakit.pendaftaran.kd_petugas,
+    rumah_sakit.pendaftaran.keluhan,
+    rumah_sakit.pendaftaran.diagnosa_awal,
+    rumah_sakit.pendaftaran.status,
+    rumah_sakit.petugas_medis.kd_petugas,
+    rumah_sakit.petugas_medis.nama_petugas
+FROM 
+    rumah_sakit.pendaftaran
+INNER JOIN 
+    rumah_sakit.pasien ON rumah_sakit.pendaftaran.kd_pasien = rumah_sakit.pasien.kd_pasien 
+INNER JOIN 
+    rumah_sakit.petugas_medis ON rumah_sakit.pendaftaran.kd_petugas = rumah_sakit.petugas_medis.kd_petugas
+WHERE 
+    rumah_sakit.pendaftaran.no_registrasi LIKE CONCAT('%', $P{no_registrasi}, '%')]]></query>
+	<field name="kd_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_pasien"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="nama_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_pasien"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="COLUMN_3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_pasien"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pendaftaran"/>
+	</field>
+	<field name="tgl_registrasi" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="tgl_registrasi"/>
+		<property name="com.jaspersoft.studio.field.label" value="tgl_registrasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pendaftaran"/>
+	</field>
+	<field name="kd_petugas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_petugas"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_petugas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pendaftaran"/>
+	</field>
+	<field name="keluhan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="keluhan"/>
+		<property name="com.jaspersoft.studio.field.label" value="keluhan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pendaftaran"/>
+	</field>
+	<field name="diagnosa_awal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="diagnosa_awal"/>
+		<property name="com.jaspersoft.studio.field.label" value="diagnosa_awal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pendaftaran"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pendaftaran"/>
+	</field>
+	<field name="COLUMN_9" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_petugas"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_petugas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="petugas_medis"/>
+	</field>
+	<field name="nama_petugas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_petugas"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_petugas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="petugas_medis"/>
+	</field>
+	<group name="kd_pasien">
+		<expression><![CDATA[$F{kd_pasien}]]></expression>
+	</group>
+	<group name="nama_pasien">
+		<expression><![CDATA[$F{nama_pasien}]]></expression>
+	</group>
+	<group name="COLUMN_3">
+		<expression><![CDATA[$F{COLUMN_3}]]></expression>
+	</group>
+	<group name="tgl_registrasi">
+		<expression><![CDATA[$F{tgl_registrasi}]]></expression>
+	</group>
+	<group name="kd_petugas">
+		<expression><![CDATA[$F{kd_petugas}]]></expression>
+	</group>
+	<group name="keluhan">
+		<expression><![CDATA[$F{keluhan}]]></expression>
+	</group>
+	<group name="diagnosa_awal">
+		<expression><![CDATA[$F{diagnosa_awal}]]></expression>
+	</group>
+	<group name="status">
+		<expression><![CDATA[$F{status}]]></expression>
+	</group>
+	<group name="COLUMN_9">
+		<expression><![CDATA[$F{COLUMN_9}]]></expression>
+	</group>
+	<group name="nama_petugas">
+		<expression><![CDATA[$F{nama_petugas}]]></expression>
+	</group>
+	<background splitType="Stretch"/>
+	<title height="81" splitType="Stretch">
+		<element kind="staticText" uuid="1df27f61-b487-426a-8d24-5acaafb54f88" x="95" y="0" width="210" height="25" fontSize="19.0" bold="true">
+			<text><![CDATA[Rumah Sakit Kita]]></text>
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="image" uuid="014b0391-e349-446c-812d-56e0b0a5f43b" x="0" y="0" width="65" height="60" hImageAlign="Center">
+			<expression><![CDATA["logo-128.png"]]></expression>
+		</element>
+		<element kind="line" uuid="7acc7642-9fad-43ba-b6de-ca4518843dd6" x="0" y="80" width="556" height="1">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="8a421273-1788-4a2b-9dea-bc35e285cdaf" x="95" y="25" width="205" height="15">
+			<text><![CDATA[Jl. Nangka Raya No.58 C, RT.7/RW.5]]></text>
+		</element>
+		<element kind="staticText" uuid="7677a675-40a4-4652-b936-9d4389e8baf2" x="95" y="40" width="245" height="15">
+			<text><![CDATA[Tj. Barat, Kec. Jagakarsa, Kota Jakarta Selatan, DKI Jakarta]]></text>
+		</element>
+	</title>
+	<pageHeader height="50" splitType="Stretch">
+		<element kind="staticText" uuid="a699d46f-d114-4790-87e7-0de71a316933" x="430" y="20" width="54" height="20">
+			<text><![CDATA[Nama :]]></text>
+		</element>
+		<element kind="textField" uuid="a3593465-2ee8-4971-820b-cb4bec742eec" x="485" y="20" width="70" height="20">
+			<expression><![CDATA[$P{no_registrasi}]]></expression>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5602b6ee-fd34-4e5a-b563-79c260c3729b"/>
+		</element>
+		<element kind="line" uuid="712f308f-cb3c-437c-bd72-ccf85adfb571" x="0" y="48" width="556" height="1"/>
+		<element kind="staticText" uuid="4783eedc-41df-405f-8776-3165bb5f28be" x="0" y="10" width="220" height="20" fontSize="15.0" bold="true">
+			<text><![CDATA[Laporan Pendaftaran Pasien]]></text>
+		</element>
+	</pageHeader>
+	<columnHeader height="24" splitType="Stretch">
+		<element kind="staticText" uuid="5b028275-28b1-4064-aab8-b95800a6d9a6" x="0" y="0" width="80" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Nama]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5602b6ee-fd34-4e5a-b563-79c260c3729b"/>
+		</element>
+		<element kind="staticText" uuid="091b17e7-8568-4340-bd1c-186e03fe5963" x="80" y="0" width="90" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Tanggal]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="33c5fa1e-97fc-4e15-a0c5-c2218f5f4610"/>
+		</element>
+		<element kind="staticText" uuid="e6cde4a4-7a18-48a1-a11b-68d9667f2698" x="170" y="0" width="100" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Nama Petugas]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+		</element>
+		<element kind="line" uuid="e3e54f4b-ac6d-4cdb-8f20-b3fca3d2e247" x="-1" y="20" width="556" height="1"/>
+		<element kind="staticText" uuid="7b75c2ba-2a3a-4875-9812-ed5959310f0e" x="460" y="0" width="95" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Status]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+		</element>
+		<element kind="staticText" uuid="df4e9793-ef9e-4c48-aac1-30d371683603" x="365" y="0" width="95" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Diagnosa Awal]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+		</element>
+		<element kind="staticText" uuid="b1b454bd-c5a5-4415-ad28-7a0848a7aa20" x="270" y="0" width="95" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Keluhan]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<element kind="textField" uuid="1aa81178-5d3a-43b9-aebc-0f30061e329c" x="0" y="5" width="80" height="20">
+				<expression><![CDATA[$F{nama_pasien}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="42543974-f8d5-4f88-8dac-c74e880eef3a"/>
+			</element>
+			<element kind="textField" uuid="fe43deaf-3496-4dae-895d-7d891f9bbd3f" x="80" y="5" width="80" height="20">
+				<expression><![CDATA[$F{tgl_registrasi}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5602b6ee-fd34-4e5a-b563-79c260c3729b"/>
+			</element>
+			<element kind="textField" uuid="16e6205b-59f4-4ee7-bcea-3b1d7c8436db" x="170" y="5" width="100" height="20">
+				<expression><![CDATA[$F{nama_petugas}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="33c5fa1e-97fc-4e15-a0c5-c2218f5f4610"/>
+			</element>
+			<element kind="textField" uuid="d54c29a0-252e-4cea-be09-82f1e279a594" x="270" y="5" width="95" height="20">
+				<expression><![CDATA[$F{keluhan}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+			</element>
+			<element kind="textField" uuid="fb2636de-0093-48a2-ae49-ac9b6e32638b" x="365" y="5" width="95" height="20">
+				<expression><![CDATA[$F{diagnosa_awal}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+			</element>
+			<element kind="textField" uuid="d1f72057-c153-4cc2-ab27-d826c39db9ff" x="460" y="5" width="95" height="20">
+				<expression><![CDATA[$F{status}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

@@ -1,0 +1,169 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="LJadwalShift" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6afc7fb2-3745-4b4c-9ea6-4f1fe465d12e">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MYSQL"/>
+	<parameter name="awal" class="java.sql.Date"/>
+	<parameter name="akhir" class="java.sql.Date"/>
+	<query language="SQL"><![CDATA[SELECT rumah_sakit.jadwal_shift.kd_shift,
+	rumah_sakit.jadwal_shift.kd_petugas,
+	rumah_sakit.jadwal_shift.shift,
+	rumah_sakit.jadwal_shift.tanggal,
+	rumah_sakit.jadwal_shift.jam_masuk,
+	rumah_sakit.jadwal_shift.jam_keluar,
+	rumah_sakit.jadwal_shift.keterangan,
+	rumah_sakit.petugas_medis.kd_petugas,
+	rumah_sakit.petugas_medis.nama_petugas
+FROM rumah_sakit.jadwal_shift
+	INNER JOIN rumah_sakit.petugas_medis ON 
+	 rumah_sakit.jadwal_shift.kd_petugas = rumah_sakit.petugas_medis.kd_petugas
+	 WHERE 
+	rumah_sakit.jadwal_shift.tanggal BETWEEN $P{awal} AND $P{akhir}]]></query>
+	<field name="kd_shift" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_shift"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_shift"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="jadwal_shift"/>
+	</field>
+	<field name="kd_petugas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_petugas"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_petugas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="jadwal_shift"/>
+	</field>
+	<field name="shift" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="shift"/>
+		<property name="com.jaspersoft.studio.field.label" value="shift"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="jadwal_shift"/>
+	</field>
+	<field name="tanggal" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="jadwal_shift"/>
+	</field>
+	<field name="jam_masuk" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="jam_masuk"/>
+		<property name="com.jaspersoft.studio.field.label" value="jam_masuk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="jadwal_shift"/>
+	</field>
+	<field name="jam_keluar" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="jam_keluar"/>
+		<property name="com.jaspersoft.studio.field.label" value="jam_keluar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="jadwal_shift"/>
+	</field>
+	<field name="keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="jadwal_shift"/>
+	</field>
+	<field name="COLUMN_8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_petugas"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_petugas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="petugas_medis"/>
+	</field>
+	<field name="nama_petugas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_petugas"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_petugas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="petugas_medis"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="81" splitType="Stretch">
+		<element kind="staticText" uuid="3f5d136f-8f2a-4de2-b9db-785253246c51" x="95" y="0" width="210" height="25" fontSize="19.0" bold="true">
+			<text><![CDATA[Rumah Sakit Kita]]></text>
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="image" uuid="1df660c4-8fd0-430e-b2b4-c9e31ad6932c" x="0" y="0" width="65" height="60" hImageAlign="Center">
+			<expression><![CDATA["logo-128.png"]]></expression>
+		</element>
+		<element kind="staticText" uuid="50f70751-fb56-46eb-8700-6171adb8bd5a" x="95" y="25" width="205" height="15">
+			<text><![CDATA[Jl. Nangka Raya No.58 C, RT.7/RW.5]]></text>
+		</element>
+		<element kind="staticText" uuid="29b9381b-9ed8-4e45-b320-98d1968f8ca5" x="95" y="40" width="245" height="15">
+			<text><![CDATA[Tj. Barat, Kec. Jagakarsa, Kota Jakarta Selatan, DKI Jakarta]]></text>
+		</element>
+		<element kind="line" uuid="5ae8bd58-eed0-4ee6-a231-b5302e0cff98" x="0" y="80" width="556" height="1">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+	</title>
+	<pageHeader height="54" splitType="Stretch">
+		<element kind="staticText" uuid="18f26e06-ff91-4afc-aafd-e2b35902faca" x="305" y="20" width="90" height="20">
+			<text><![CDATA[Tanggal Laporan : ]]></text>
+		</element>
+		<element kind="staticText" uuid="e7268f87-ec3a-47a2-96f0-cd23fa841b22" x="465" y="20" width="20" height="20" hTextAlign="Center">
+			<text><![CDATA[-]]></text>
+		</element>
+		<element kind="textField" uuid="d9230996-76e6-4e58-9d92-f457cdeab478" x="485" y="20" width="70" height="20">
+			<expression><![CDATA[$P{akhir}]]></expression>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5602b6ee-fd34-4e5a-b563-79c260c3729b"/>
+		</element>
+		<element kind="line" uuid="f7a4d193-c7c3-499e-94ab-47b915c5f176" x="0" y="50" width="556" height="1">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="ba23a5d3-422d-4659-a57e-9ed761773fb9" x="0" y="10" width="230" height="20" fontSize="15.0" bold="true">
+			<text><![CDATA[Laporan Jadwal Shift]]></text>
+		</element>
+		<element kind="textField" uuid="318342fe-4bb8-4d23-a2f3-4febdd090b18" x="395" y="20" width="70" height="20">
+			<expression><![CDATA[$P{awal}]]></expression>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5602b6ee-fd34-4e5a-b563-79c260c3729b"/>
+		</element>
+	</pageHeader>
+	<columnHeader height="33" splitType="Stretch">
+		<element kind="staticText" uuid="a662f234-b5dc-41c9-aef4-125df34da5e0" x="80" y="10" width="90" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Nama Petugas]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="33c5fa1e-97fc-4e15-a0c5-c2218f5f4610"/>
+		</element>
+		<element kind="staticText" uuid="46c1155a-5b32-40b6-bbf3-c25d0d0c5ee6" x="465" y="10" width="90" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Keterangan]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+		</element>
+		<element kind="staticText" uuid="8a59ab6a-85e5-4c8e-ba08-8229d6bc4b81" x="0" y="10" width="80" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Kode Shift]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5602b6ee-fd34-4e5a-b563-79c260c3729b"/>
+		</element>
+		<element kind="staticText" uuid="8cede850-84dd-4f57-99e1-63439bf1ac8d" x="220" y="10" width="90" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Tanggal]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+		</element>
+		<element kind="staticText" uuid="3f4a0d8c-8138-4d9b-8cd5-4176031a5afc" x="170" y="10" width="50" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Shift]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+		</element>
+		<element kind="line" uuid="74f0bd60-9d87-4a64-a274-64347ca32c26" x="-1" y="31" width="556" height="1"/>
+		<element kind="staticText" uuid="5f0c5868-e680-4b2a-ba0a-c5e2fa1bc8e5" x="310" y="10" width="75" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Jam Masuk]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+		</element>
+		<element kind="staticText" uuid="0cfeea7e-de4f-4278-90b5-bd035362b27a" x="390" y="10" width="75" height="20" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Jam Keluar]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ce3f55c-dfe5-476a-95ae-9babd482819d"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<element kind="textField" uuid="6aedc3ad-21ee-463e-a041-ecb974db43c8" x="0" y="3" width="80" height="20">
+				<expression><![CDATA[$F{kd_shift}]]></expression>
+			</element>
+			<element kind="textField" uuid="cf70ecd8-65ba-40c1-8ed0-17ae13f23c5f" x="80" y="3" width="90" height="20">
+				<expression><![CDATA[$F{nama_petugas}]]></expression>
+			</element>
+			<element kind="textField" uuid="43f3e1b8-185a-4f24-b14d-a10a71f43302" x="170" y="3" width="50" height="20">
+				<expression><![CDATA[$F{shift}]]></expression>
+			</element>
+			<element kind="textField" uuid="b3355d8b-9620-4f3d-8390-a69bb82cf814" x="220" y="3" width="90" height="20">
+				<expression><![CDATA[$F{tanggal}]]></expression>
+			</element>
+			<element kind="textField" uuid="8dde98fc-0edd-4fe2-ab6d-80542dec1fac" x="310" y="3" width="75" height="20">
+				<expression><![CDATA[$F{jam_masuk}]]></expression>
+			</element>
+			<element kind="textField" uuid="1adc9058-c9f7-4d07-9288-57100d63dff5" x="390" y="3" width="75" height="20">
+				<expression><![CDATA[$F{jam_keluar}]]></expression>
+			</element>
+			<element kind="textField" uuid="0d3fde04-763c-4014-9e31-28a7dcf20f5e" x="465" y="3" width="90" height="20">
+				<expression><![CDATA[$F{keterangan}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>
